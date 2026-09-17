@@ -1,0 +1,6 @@
+{
+  "name": "청주풋볼파크",
+  "description": "충북 최대 규모 복합 스포츠 파크 청주풋볼파크 공식 웹사이트. 기업 체육대회, 워크숍, 축구·풋살장 대관, 바비큐, 세미나실 안내 및 실시간 견적기 제공.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
