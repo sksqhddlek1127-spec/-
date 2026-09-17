@@ -253,7 +253,7 @@ ${formData.message || '별도 요청사항 없음'}`;
                   '실내 풋살장',
                   '세미나실(가베슈)',
                   '단체 바비큐장(250석)',
-                  '전문 MC/음향',
+                  '기업전문 MC/음향',
                   '연계 숙박',
                 ].map((fac) => {
                   const isChecked = formData.facilities.includes(fac);

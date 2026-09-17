@@ -95,7 +95,7 @@ export const DualQuotationCalculator: React.FC = () => {
     // Options Total
     let optionsTotal = 0;
     if (cfp.mcSelected) {
-      optionsTotal += 800000 + Math.max(0, cfp.mcHours - 2) * 400000;
+      optionsTotal += cfp.mcHours === 4 ? 1200000 : 700000;
     }
     optionsTotal += cfp.staffCount * 150000;
     if (cfp.basicEquipment) optionsTotal += 150000;
@@ -422,7 +422,7 @@ export const DualQuotationCalculator: React.FC = () => {
             <div className="space-y-3">
               <label className="text-sm font-bold text-primary">3. 행사 지원 및 렌탈 옵션</label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                {/* 전문 MC */}
+                {/* 기업전문 MC */}
                 <div className="p-3 rounded-xl bg-surface-container-low space-y-2 border border-outline-variant/30">
                   <label className="flex items-center gap-2 cursor-pointer font-bold text-primary select-none">
                     <input
@@ -431,23 +431,21 @@ export const DualQuotationCalculator: React.FC = () => {
                       onChange={(e) => setCfp({ ...cfp, mcSelected: e.target.checked })}
                       className="w-4 h-4 rounded accent-primary"
                     />
-                    <span>전문 MC 섭외</span>
+                    <span>기업전문 MC 섭외</span>
                   </label>
                   <div className="text-[11px] text-on-surface-variant">
-                    기본 2시간 80만원 / 추가시간당 40만원
+                    2시간 70만원 / 4시간 120만원
                   </div>
                   <div className="flex items-center gap-2 pt-1">
-                    <span>진행:</span>
+                     <span>진행:</span>
                     <select
                       value={cfp.mcHours}
                       disabled={!cfp.mcSelected}
                       onChange={(e) => setCfp({ ...cfp, mcHours: Number(e.target.value) })}
                       className="h-7 px-2 rounded bg-surface-container-lowest border border-outline-variant/50 text-xs"
                     >
-                      <option value={2}>2시간 (800,000원)</option>
-                      <option value={3}>3시간 (1,200,000원)</option>
-                      <option value={4}>4시간 (1,600,000원)</option>
-                      <option value={5}>5시간 (2,000,000원)</option>
+                      <option value={2}>2시간 (700,000원)</option>
+                      <option value={4}>4시간 (1,200,000원)</option>
                     </select>
                   </div>
                 </div>
@@ -514,7 +512,7 @@ export const DualQuotationCalculator: React.FC = () => {
                 <div className="p-3 rounded-xl bg-surface-container-low space-y-2 border border-outline-variant/30 sm:col-span-2">
                   <div className="flex items-center justify-between font-bold text-primary">
                     <span>전문 음향 장비 셋팅</span>
-                    <span className="text-secondary font-semibold">인원 규모별 선택</span>
+                    <span className="text-secondary font-semibold">구장별 선택</span>
                   </div>
                   <select
                     value={cfp.audioTier}
@@ -522,8 +520,8 @@ export const DualQuotationCalculator: React.FC = () => {
                     className="w-full h-8 px-2 rounded bg-surface-container-lowest border border-outline-variant/50 text-xs font-semibold"
                   >
                     <option value={0}>음향 장비 미선택 (0원)</option>
-                    <option value={300000}>50명 이하 (기본 음향 스피커 + 무선 마이크 2개) - 300,000원</option>
-                    <option value={500000}>51명 이상 (대형 방송 스피커 + 무선 마이크 4개) - 500,000원</option>
+                    <option value={300000}>풋살장 음향렌탈 (기본 음향 스피커 + 무선 마이크 1개) - 300,000원</option>
+                    <option value={500000}>축구장 음향렌탈 (대형 방송 스피커 + 무선 마이크 2개) - 500,000원</option>
                   </select>
                 </div>
 
@@ -688,14 +686,14 @@ export const DualQuotationCalculator: React.FC = () => {
               <span className="material-symbols-outlined text-[20px] text-on-tertiary-container shrink-0">
                 info
               </span>
-              <span>가베슈의 세미나실 및 단체 식음료(바비큐)는 <strong>최소 주문인원 20명</strong>부터 접수 가능합니다.</span>
+              <span>가베슈 세미나실은 <strong>최소 12명</strong>부터, 단체 바베큐식사는 <strong>최소 20명</strong>부터 접수 가능합니다.</span>
             </div>
 
             {/* Gabeshu 1. 세미나실 & 커피 */}
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <label className="text-sm font-bold text-primary">1. 세미나실 이용 및 웰컴티</label>
-                <span className="text-[11px] font-bold text-on-tertiary-container">1인 10,000원 (20인 이상)</span>
+                <span className="text-[11px] font-bold text-on-tertiary-container">1인 10,000원 (12인 이상)</span>
               </div>
               <div className="p-4 rounded-xl bg-surface-container-low space-y-3 border border-outline-variant/30 text-xs sm:text-sm">
                 <label className="flex items-center gap-3 cursor-pointer select-none">
@@ -707,7 +705,7 @@ export const DualQuotationCalculator: React.FC = () => {
                       setGbs({
                         ...gbs,
                         seminarSelected: checked,
-                        seminarPax: checked && gbs.seminarPax === 0 ? 20 : gbs.seminarPax,
+                        seminarPax: checked && gbs.seminarPax === 0 ? 12 : gbs.seminarPax,
                       });
                     }}
                     className="w-5 h-5 rounded accent-on-tertiary-container"
@@ -719,14 +717,14 @@ export const DualQuotationCalculator: React.FC = () => {
                 </label>
 
                 <div className="flex items-center justify-between pt-1">
-                  <span className="text-xs text-on-surface-variant">세미나 참가 인원 (최소 20인):</span>
+                  <span className="text-xs text-on-surface-variant">세미나 참가 인원 (최소 12인):</span>
                   <div className="flex items-center gap-2">
                     <input
                       type="number"
-                      min="20"
+                      min="12"
                       max="250"
                       value={gbs.seminarPax === 0 ? '' : gbs.seminarPax}
-                      placeholder="20"
+                      placeholder="12"
                       disabled={!gbs.seminarSelected}
                       onChange={(e) => setGbs({ ...gbs, seminarPax: Math.max(0, Number(e.target.value)) })}
                       className="w-20 h-8 px-2 rounded bg-surface-container-lowest border border-outline-variant/50 text-right font-bold text-xs"
@@ -776,8 +774,8 @@ export const DualQuotationCalculator: React.FC = () => {
                       className="w-5 h-5 rounded accent-on-tertiary-container"
                     />
                     <div>
-                      <div className="font-bold text-primary">단체 삼겹/목살 바비큐 식사 (250석)</div>
-                      <div className="text-xs text-on-surface-variant">1인 35,000원 (국내산 고기, 쌈채소, 밥, 된장찌개 일체)</div>
+                      <div className="font-bold text-primary">단체 바베큐식사 (250석)</div>
+                      <div className="text-xs text-on-surface-variant">1인 35,000원 (국내산 고기, 쌈채소, 밥, 부대찌개 일체)</div>
                     </div>
                   </label>
                   <div className="flex items-center gap-2 self-end sm:self-auto">
@@ -796,7 +794,7 @@ export const DualQuotationCalculator: React.FC = () => {
                   </div>
                 </div>
 
-                {/* 출장 케이터링 */}
+                {/* 가베슈 케이터링 */}
                 <div className="p-3.5 rounded-xl bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-outline-variant/30">
                   <label className="flex items-center gap-3 cursor-pointer select-none">
                     <input
@@ -813,7 +811,7 @@ export const DualQuotationCalculator: React.FC = () => {
                       className="w-5 h-5 rounded accent-on-tertiary-container"
                     />
                     <div>
-                      <div className="font-bold text-primary">프리미엄 출장 케이터링</div>
+                      <div className="font-bold text-primary">가베슈 케이터링</div>
                       <div className="text-xs text-on-surface-variant">1인 35,000원 (핫디쉬, 샐러드, 핑거푸드 뷔페식)</div>
                     </div>
                   </label>
@@ -1175,11 +1173,12 @@ export const DualQuotationCalculator: React.FC = () => {
                         <td className="border border-slate-300 p-2 font-bold">행사 지원 & 렌탈</td>
                         <td className="border border-slate-300 p-2">
                           {[
-                            cfp.mcSelected && `전문 MC (${cfp.mcHours}시간)`,
+                            cfp.mcSelected && `기업전문 MC (${cfp.mcHours}시간)`,
                             cfp.staffCount > 0 && `스태프 ${cfp.staffCount}명`,
                             cfp.basicEquipment && '체육대회 기본용품',
                             cfp.vestCount > 0 && `조끼 ${cfp.vestCount}벌`,
-                            cfp.audioTier > 0 && '전문 음향장비',
+                            cfp.audioTier === 300000 && '풋살장 음향렌탈',
+                            cfp.audioTier === 500000 && '축구장 음향렌탈',
                             cfp.tentCount > 0 && `천막 ${cfp.tentCount}동`,
                             cfp.tableCount > 0 && `테이블 ${cfp.tableCount}개`,
                             cfp.stayCount > 0 && `연계숙박 ${cfp.stayCount}명`,
@@ -1208,8 +1207,8 @@ export const DualQuotationCalculator: React.FC = () => {
                         <td className="border border-slate-300 p-2 font-bold">식사 / 바비큐</td>
                         <td className="border border-slate-300 p-2">
                           {[
-                            gbs.bbqSelected && `단체 바비큐 (${gbs.bbqPax}명)`,
-                            gbs.cateringSelected && `출장 케이터링 (${gbs.cateringPax}명)`,
+                            gbs.bbqSelected && `단체 바베큐식사 (${gbs.bbqPax}명)`,
+                            gbs.cateringSelected && `가베슈 케이터링 (${gbs.cateringPax}명)`,
                             gbs.buffetSelected && `한식 뷔페 (${gbs.buffetPax}명)`,
                             gbs.sandwichCount > 0 && `샌드위치 ${gbs.sandwichCount}개`,
                             gbs.ricecakeCount > 0 && `떡 ${gbs.ricecakeCount}개`,

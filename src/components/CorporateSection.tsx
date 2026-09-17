@@ -66,7 +66,7 @@ export const CorporateSection: React.FC = () => {
               행사 담당자의 수고를 덜어주는 체계적 지원
             </h3>
             <p className="text-sm sm:text-base text-on-surface-variant leading-relaxed">
-              전문 MC, 음향 및 방송장비, 텐트·테이블 렌탈, 행사 지원 스태프까지 원스톱으로 구성 가능합니다.
+              기업전문 MC, 음향 및 방송장비, 텐트·테이블 렌탈, 행사 지원 스태프까지 원스톱으로 구성 가능합니다.
             </p>
           </div>
           <div className="flex items-center gap-3 shrink-0 w-full sm:w-auto">

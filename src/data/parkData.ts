@@ -220,10 +220,10 @@ export const FACILITIES: FacilityItem[] = [
       '고화질 빔프로젝터 & 무선 마이크 음향 시스템 완비',
       '이용객 웰컴티 제공 · 최신 노래방 기기 유상 대여 가능',
     ],
-    rate: '1인 10,000원 (최소 20인)',
+    rate: '1인 10,000원 (최소 12인)',
     rateValue: 10000,
     image: facSeminarImg,
-    basePax: 20,
+    basePax: 12,
   },
   {
     id: 'bbq',
@@ -234,7 +234,7 @@ export const FACILITIES: FacilityItem[] = [
     specs: [
       '기본 240석 완비 · 천막 테이블 구성 시 최대 350석 확장',
       '숯그릴 제공',
-      '가베슈 직영 국내산 삼겹살·목살 프리미엄 만찬 연계',
+      '국내산 고기, 쌈채소, 밥, 부대찌개 일체 제공',
     ],
     rate: '1인 35,000원 (1인 기준)',
     rateValue: 35000,
@@ -294,7 +294,7 @@ export const SAMPLE_TIMELINE: TimelineItem[] = [
   {
     time: '10:00 - 12:00',
     title: '오전 체육대회',
-    description: '전문 MC 진행 개회식, 파이팅 준비체조, 단체 줄다리기, 에어봉 릴레이, 전략 단체전',
+    description: '기업전문 MC 진행 개회식, 파이팅 준비체조, 단체 줄다리기, 에어봉 릴레이, 전략 단체전',
   },
   {
     time: '12:00 - 13:30',
@@ -396,7 +396,7 @@ export const BUSINESS_INFO = {
     telLink: 'tel:01079008219',
     email: 'cfpark2021@naver.com',
     emailLink: 'mailto:cfpark2021@naver.com',
-    role: '정규 축구장, 풋살장, 족구장, 실내풋살장 대관 및 전문 MC, 행사 지원 스태프, 장비 렌탈 총괄',
+    role: '정규 축구장, 풋살장, 족구장, 실내풋살장 대관 및 기업전문 MC, 행사 지원 스태프, 장비 렌탈 총괄',
     taxNote: '시설 대관 및 행사 운영 부문 세금계산서 독립 발행',
   },
   gabeshu: {
